@@ -5,7 +5,7 @@ close hidden
 
 
 
-m=1;        %choose the mode to be plotted
+m=0;        %choose the mode to be plotted
 n=2;
 
 dim=max([m,n]);
@@ -35,15 +35,17 @@ Y = R.*sin(Theta);
 [m,n]=size(R);
 
 surf(X,Y,mode_mn);
+
 title(['Cylindrical Duct, Mode(',num2str(title_m),...
     ',',num2str(title_n),')'])
 
 figure(1);
 hFig1 = figure(1);
 set(hFig1, 'Position', [250 200 800 700])
-t_duration=10;
-dt=.01;
-
+t_duration=2;
+dt=.002;
+zz=[];
+xx=1;
 for t=0:dt:t_duration
 
             %Applying omega_mn and time progression to modes individually
@@ -51,11 +53,11 @@ for t=0:dt:t_duration
         
 
    surf(X,Y,mode_mn*cos(3*t));
-
+    
     
     
     zlim([-1,1])
-    pause(.001)
+    pause(.01)
     
     %Shape=zeros(size(Initial));
 end
